@@ -4,6 +4,8 @@ const tabela = document.getElementById("tabela");
 // Seleciona o botão que listará os usuários ao ser clicado
 const btnListar = document.getElementById("botao");
 
+let tableColor;
+
 // Array de objetos que simula um "Banco de dados" de usuários, cada objeto tem id, nome, cpf, email e status (0 para inativo e 1 para ativo)
 const usuarios = [
     { id: 1, nome: 'inativo', cpf: 11350940361, email: 'test@gmail.com', status: 0 },
@@ -29,14 +31,14 @@ const inativos = usuarios.filter((user) => {
 });
 
 // Função que exibe os usuários na tabela HTML. Recebe um array de usuários como parâmetro e gera o conteúdo da tabela
-function mostrarUsuarios(listaUsuarios) {
+function mostrarUsuarios(listaUsuarios, color) {
     // O método 'map' percorre o array de usuários e transforma cada objeto em uma linha de tabela HTML (em formato de string)
     const tableBody = listaUsuarios.map((user) => {
         return `<tr>
-            <th scope="row">${user.id}</th>
-                <td>${user.nome}</td>
-                <td>${user.cpf}</td>
-                <td>${user.email}</td>
+            <th scope="row" class="${color}">${user.id}</th>
+                <td class="${color}">${user.nome}</td>
+                <td class="${color}">${user.cpf}</td>
+                <td class="${color}">${user.email}</td>
         </tr>`;
     }).join('');  // 'join' une todas as linhas geradas em uma única string para que possam ser inseridas na tabela
 
@@ -56,17 +58,21 @@ function mostrarUsuarios(listaUsuarios) {
 btnListar.addEventListener('click', function() {
 
     // Captura o valor selecionado na lista de opções
-    var listaSelecionado = document.getElementById('lista').value;
+    let listaSelecionado = document.getElementById('lista').value;
 
     // Verifica o valor selecionado e chama a função com a lista apropriada
     if (listaSelecionado == 'todos') {
-        mostrarUsuarios(usuarios); // Exibe todos os usuários
+        tableColor = 'bg-info';
+        mostrarUsuarios(usuarios, tableColor); // Exibe todos os usuários
     } else if (listaSelecionado == 'ativos') {
-        mostrarUsuarios(ativos); // Exibe apenas usuários ativos
+        tableColor = 'bg-success';
+        mostrarUsuarios(ativos, tableColor); // Exibe apenas usuários ativos
     } else if (listaSelecionado == 'inativos') {
-        mostrarUsuarios(inativos); // Exibe apenas usuários inativos
+        tableColor = 'bg-danger';
+        mostrarUsuarios(inativos, tableColor); // Exibe apenas usuários inativos
     }
 });
+
 
 
 
