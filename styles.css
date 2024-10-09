@@ -1,3 +1,16 @@
 body {
     background-color: rgb(79, 79, 79);
 }
+
+.todos {
+    background-color: #e9ecef !important;
+    color: black !important;
+}
+
+.inativos {
+    background-color: #6c757d !important;
+}
+
+.ativos {
+    background-color: #28a745 !important;
+}

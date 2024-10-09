@@ -62,13 +62,13 @@ btnListar.addEventListener('click', function() {
 
     // Verifica o valor selecionado e chama a função com a lista apropriada
     if (listaSelecionado == 'todos') {
-        tableColor = 'bg-info';
+        tableColor = 'todos';
         mostrarUsuarios(usuarios, tableColor); // Exibe todos os usuários
     } else if (listaSelecionado == 'ativos') {
-        tableColor = 'bg-success';
+        tableColor = 'ativos';
         mostrarUsuarios(ativos, tableColor); // Exibe apenas usuários ativos
     } else if (listaSelecionado == 'inativos') {
-        tableColor = 'bg-danger';
+        tableColor = 'inativos';
         mostrarUsuarios(inativos, tableColor); // Exibe apenas usuários inativos
     }
 });
